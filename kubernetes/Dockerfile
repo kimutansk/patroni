@@ -1,11 +1,7 @@
 ARG PG_MAJOR="9.6"
-# Install patroni
-ARG PATRONIVERSION="2.0.0"
-
 FROM postgres:$PG_MAJOR
 
-MAINTAINER Alexander Kukushkin <alexander.kukushkin@zalando.de>
-
+ARG PATRONI_VERSION="2.0.0"
 RUN export DEBIAN_FRONTEND=noninteractive \
     && echo 'APT::Install-Recommends "0";\nAPT::Install-Suggests "0";' > /etc/apt/apt.conf.d/01norecommend \
     && apt-get update -y \
@@ -16,7 +12,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     ## Make sure we have a en_US.UTF-8 locale available
     && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 \
     && pip3 install setuptools \
-    && "pip3 install patroni[kubernetes]==$PATRONIVERSION" \
+    && pip3 install patroni[kubernetes]==$PATRONI_VERSION \
     && PGHOME=/home/postgres \
     && mkdir -p $PGHOME \
     && chown postgres $PGHOME \
