@@ -1,7 +1,7 @@
-ARG PG_MAJOR="9.6"
+ARG PG_MAJOR=9.6
 FROM postgres:$PG_MAJOR
 
-ARG PATRONI_VERSION="2.0.0"
+ARG PATRONI_VERSION=2.0.0
 RUN export DEBIAN_FRONTEND=noninteractive \
     && echo 'APT::Install-Recommends "0";\nAPT::Install-Suggests "0";' > /etc/apt/apt.conf.d/01norecommend \
     && apt-get update -y \
