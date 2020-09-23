@@ -39,7 +39,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: patronidemo-repl
+  name: patroni-test-repl
   labels:
     application: patroni
     cluster-name:  &cluster_name patroni-test
