@@ -297,7 +297,7 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: patroni-test-pod-node01
+  name: patroni-test-pod-node03
   labels:
     application: patroni
     cluster-name: &cluster_name patroni-test
